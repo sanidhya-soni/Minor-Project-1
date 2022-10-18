@@ -1,4 +1,4 @@
-package trials;
+package source.trials;
 
 public class Info
 {

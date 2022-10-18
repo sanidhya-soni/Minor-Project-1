@@ -1,4 +1,4 @@
-package pro;
+package source;
 
 public class Rack
 {

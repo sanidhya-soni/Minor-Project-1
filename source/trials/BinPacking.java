@@ -1,4 +1,4 @@
-package trials;
+package source.trials;
 
 // Java program to find number
 // of bins required using

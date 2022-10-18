@@ -48,13 +48,13 @@ def generator(datapoints,start_d,end_d,min_w,max_w):
     df.to_csv('pro/Data.csv',index=False)
 
 # data_points = int(input("Enter the number of data points : "))
-data_points = 100
+data_points = 50
 
 # start_d = input("Enter the start date : ")
-start_d = '10/4/2022 12:00 AM'
+start_d = '10/1/2022 12:00 AM'
 
 # end_d = input("Enter the end date : ")
-end_d = '10/8/2022 12:00 AM'
+end_d = '10/4/2022 12:00 AM'
 
 # min_w = int(input("Enter the minimum weight : "))
 min_w = 100
