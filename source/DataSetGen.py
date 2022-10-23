@@ -45,7 +45,7 @@ def generator(datapoints,start_d,end_d,min_w,max_w):
         barcode.append(s)
     
     df = pd.DataFrame(barcode)
-    df.to_csv('pro/Data.csv',index=False)
+    df.to_csv('source/Data.csv',index=False)
 
 # data_points = int(input("Enter the number of data points : "))
 data_points = 50
@@ -57,10 +57,10 @@ start_d = '10/1/2022 12:00 AM'
 end_d = '10/4/2022 12:00 AM'
 
 # min_w = int(input("Enter the minimum weight : "))
-min_w = 100
+min_w = 1
 
 # max_w = int(input("Enter the max weight : "))
-max_w = 300
+max_w = 4
 
 generator(data_points,start_d,end_d,min_w,max_w)
 

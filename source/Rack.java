@@ -1,5 +1,7 @@
 package source;
 
+import source.trials.Tray;
+
 public class Rack
 {
     int capacity;
