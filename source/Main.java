@@ -9,6 +9,9 @@ public class Main
 
     static int row = 3;
     static int column = 5;
+    static int day = 3;
+
+    int tray_table[][];
 
     public static void main(String[] args) throws IOException
     {

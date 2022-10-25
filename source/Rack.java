@@ -1,21 +1,19 @@
 package source;
 
-import source.trials.Tray;
-
 public class Rack
 {
-    int capacity;
-    Tray[] rack;
-    int top;
+    int section_capacity;
+    int sections;
+    Tray[][] rack;
 
-    Rack(int capacity)
+    Rack(int sections, int section_capacity)
     {
-        this.capacity = capacity;
-        rack = new Tray[this.capacity];
-        this.top = 0;
+        this.sections = sections;
+        this.section_capacity = section_capacity;
+        this.rack = new Tray[this.sections][this.section_capacity];
     }
 
-    void push(Tray tray)
+    void add(Tray tray)
     {
         if(hasSpace())
         {
