@@ -1,11 +1,8 @@
 package source.trials;
 
-// Java program to find number
-// of bins required using
-// Best fit algorithm.
 class BinPacking
 {
-    static int bestFit(int weight[], int n, int c)
+    static int bestFit(int size[], int n, int c)
     {
         int res = 0;
 
@@ -18,29 +15,29 @@ class BinPacking
 
             for (j = 0; j < res; j++)
             {
-                if (bin_rem[j] >= weight[i] && bin_rem[j] - weight[i] < min)
+                if (bin_rem[j] >= size[i] && bin_rem[j] - size[i] < min)
                 {
                     bi = j;
-                    min = bin_rem[j] - weight[i];
+                    min = bin_rem[j] - size[i];
                 }
             }
 
             if (min == c + 1)
             {
-                bin_rem[res] = c - weight[i];
+                bin_rem[res] = c - size[i];
                 res++;
             }
             else
-                bin_rem[bi] -= weight[i];
+                bin_rem[bi] -= size[i];
         }
         return res;
     }
 
     public static void main(String[] args)
     {
-        int[] weight = { 2, 5, 4, 7, 1, 3, 8 };
+        int[] size = { 2, 5, 4, 7, 1, 3, 8 };
         int c = 10;
-        int n = weight.length;
-        System.out.print("Number of bins required in Best Fit : " + bestFit(weight, n, c));
+        int n = size.length;
+        System.out.print("Number of bins required in Best Fit : " + bestFit(size, n, c));
     }
 }
