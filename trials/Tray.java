@@ -1,4 +1,4 @@
-package source.trials;
+package trials;
 
 public class Tray
 {

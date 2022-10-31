@@ -1,3 +1,5 @@
+package source;
+
 public class bin_pack {
     public static int bestFit(double size[], int n, int cap)
     {

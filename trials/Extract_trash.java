@@ -1,4 +1,4 @@
-package source.trials;
+package trials;
 // package source;
 
 // import java.io.BufferedReader;
