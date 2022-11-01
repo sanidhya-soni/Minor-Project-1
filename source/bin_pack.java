@@ -1,6 +1,7 @@
 package source;
 
-public class bin_pack {
+public class bin_pack
+{
     public static int bestFit(double size[], int n, int cap)
     {
         //size[] - size of each fruit
@@ -24,7 +25,8 @@ public class bin_pack {
                 }
             }
 
-            if (min == cap + 1) {
+            if (min == cap + 1)
+            {
                 remain_bin[count] = cap - size[i];
                 count++;
             }
@@ -41,5 +43,4 @@ public class bin_pack {
         int n = size.length;
         System.out.println("Number of bins required in Best Fit : "+ bestFit(size, n, c));
     }
-
 }

@@ -27,7 +27,7 @@ public class DataSetGen
     public static void main(String[] args) throws Exception   
     {   
         String begin = "1/1/2022";
-        String end = "18/1/2022";
+        String end = "3/1/2022";
  
         LinkedList<Date> hitList = searchBetweenDates(
         	    new SimpleDateFormat("dd/MM/yyyy").parse(begin),
@@ -37,10 +37,10 @@ public class DataSetGen
         for(int i=0; i<hitList.size(); i++)
             comboDates[i] = new SimpleDateFormat("dd/MM/yyyy").format(((Date)hitList.get(i)));
         
-        random(comboDates);
+        random(comboDates, begin, end);
     }
 
-    static void random(String[] s)throws IOException
+    static void random(String[] s, String begin, String end)throws IOException
     {
         String path = "source//data.csv";
         File file = new File(path);
@@ -48,7 +48,41 @@ public class DataSetGen
             file.createNewFile();
         FileWriter fw = new FileWriter(file);
         BufferedWriter bw = new BufferedWriter(fw);
-        for(int i = 0; i < 100; i++)
+
+        String begin_backup = begin;
+        String end_backup = end;
+
+        String b_date = begin.substring(0, begin.indexOf("/"));
+        begin = begin.substring(begin.indexOf("/") + 1);
+        String b_month = begin.substring(0, begin.indexOf("/"));
+        begin = begin.substring(begin.indexOf("/") + 1);
+        String b_year = begin.substring(2);
+
+        if(b_date.length() == 1)
+            b_date = "0" + b_date;
+        if(b_month.length() == 1)
+            b_month = "0" + b_month;
+
+        String e_date = end.substring(0, end.indexOf("/"));
+        end = end.substring(end.indexOf("/") + 1);
+        String e_month = end.substring(0, end.indexOf("/"));
+        end = end.substring(end.indexOf("/") + 1);
+        String e_year = end.substring(2);
+
+        if(e_date.length() == 1)
+            e_date = "0" + e_date;
+        if(e_month.length() == 1)
+            e_month = "0" + e_month;
+
+        begin = begin_backup;
+        end = end_backup;
+
+        bw.write(b_date + " " + b_month + " " + "20" + b_year + "\n");
+        bw.write(e_date + " " + e_month + " " + "20" + e_year + "\n");
+
+        String[] sz = {"050", "075", "100"};
+
+        for(int i = 0; i < 500; i++)
         {
             String comp_date = s[ThreadLocalRandom.current().nextInt(0, s.length)];
             String date = comp_date.substring(0, comp_date.indexOf("/"));
@@ -57,12 +91,14 @@ public class DataSetGen
             comp_date = comp_date.substring(comp_date.indexOf("/") + 1);
             String year = comp_date.substring(2);
 
+            String size = sz[ThreadLocalRandom.current().nextInt(0, sz.length)];
+
             if(date.length() == 1)
                 date = "0" + date;
             if(month.length() == 1)
                 month = "0" + month;
 
-            bw.write(date + "" + month + "" + year + "\n");
+            bw.write(date + "" + month + "" + year + size + "\n");
         }
         
         bw.flush();

@@ -1,35 +1,44 @@
 package source;
 
-public class Tray {
+public class Tray
+{
     int row, column;
     int capacity, occupied;
     int tray[][];
     boolean isFull;
+    int height;
 
-    Tray(int row, int column) {
+    Tray(int row, int column, int height)
+    {
         this.occupied = 0;
         this.row = row;
         this.column = column;
         this.tray = new int[this.row][this.column];
         this.capacity = this.row * this.column;
         this.isFull = false;
+        this.height = height;
+        System.out.println("New tray added");
     }
 
     void add() {
 
-        if (this.hasSpace()) {
+        if (this.hasSpace())
+        {
             occupied++;
             System.out.println("Item Added");
-        } else {
+        }
+        else
+        {
             System.out.println("Is Full");
         }
 
         this.updateStatus();
     }
 
-    void remove() {
-
-        if (!this.isEmpty()) {
+    void remove()
+    {
+        if (!this.isEmpty())
+        {
             this.occupied--;
             System.out.println("Removed");
         }
@@ -37,23 +46,23 @@ public class Tray {
         this.updateStatus();
     }
 
-    boolean isEmpty() {
-
+    boolean isEmpty()
+    {
         return this.occupied == 0;
     }
 
-    boolean hasSpace() {
-
+    boolean hasSpace()
+    {
         return this.occupied != this.capacity;
     }
 
-    boolean isFull() {
-
+    boolean isFull()
+    {
         return this.occupied == this.capacity;
     }
 
-    void updateStatus() {
-
+    void updateStatus()
+    {
         this.isFull = this.occupied == this.capacity;
     }
 }
