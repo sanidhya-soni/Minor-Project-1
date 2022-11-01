@@ -140,13 +140,13 @@ public class PathAstar
             }
         }
 
-        Node res = aStar(n[0][0], n[n.length - 1][n[0].length - 1]);
+        Node res = aStar(n[0][0], n[1][2]);
         printPath(res);
     }
 
     public static void main(String[] args) {
-        int a[][] = {{0, 0, 0, 1},
-                     {0, 1, 0, 1},
+        int a[][] = {{0, 0, 0, 0},
+                     {0, 0, 0, 0},
                      {1, 0, 0, 1},
                      {1, 0, 0, 0}};
         PathAstar ob = new PathAstar(a);
@@ -154,5 +154,5 @@ public class PathAstar
     }
 }
 
-// 0 - Path
+// 0 - Path        
 // 1 - Rack or Obstacle

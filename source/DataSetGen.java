@@ -55,7 +55,7 @@ public class DataSetGen
             comp_date = comp_date.substring(comp_date.indexOf("/") + 1);
             String month = comp_date.substring(0, comp_date.indexOf("/"));
             comp_date = comp_date.substring(comp_date.indexOf("/") + 1);
-            String year = comp_date;
+            String year = comp_date.substring(2);
 
             if(date.length() == 1)
                 date = "0" + date;
