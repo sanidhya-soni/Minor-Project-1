@@ -13,6 +13,7 @@ public class Main
 {
 
     Tray[][] tray_table;
+    int[] no_of_tray_used;
     Bin[][] bins;
     Warehouse warehouse;
     static int size = 3;
@@ -22,6 +23,9 @@ public class Main
     static int max_row = 3;
     static int max_col = 3;
     static int bin_capacity = 500;
+    int bins_used;
+    int source_row;
+    int source_col;
 
     static double[] bin_min = new double[max_row];
     static
@@ -38,6 +42,8 @@ public class Main
         tray_table = new Tray[day][size];
         bins = new Bin[max_row][max_col];
         warehouse = new Warehouse(3, 3);
+        bins_used = 0;
+        no_of_tray_used = new int[day];
     }
 
     void extract() throws IOException, ParseException
@@ -88,7 +94,7 @@ public class Main
                 
                 this.addToBinTable(this.tray_table[row][col], row, col);
 
-
+                this.no_of_tray_used[dateDiff]++;
                 this.tray_table[row][col] = new Tray(this.tray_table[row][col].row, this.tray_table[row][col].column, this.tray_table[row][col].height);
                 this.tray_table[row][col].add();
             }
@@ -98,6 +104,19 @@ public class Main
 
     void addToBinTable(Tray t, int row, int col)
     {
+        for(int i = 0; i < this.bins.length; i++)
+        {
+            for(int j = 0; j < this.bins[0].length; j++)
+            {
+                if(bins[i][j].space_left < 50)
+                {
+                    warehouse.add(bins[i][j]);
+                    bins[i][j] = new Bin(bins[i][j].max_capacity, bins[i][j].day);
+                    this.bins_used++;
+                }
+            }
+        }
+
         int bin = 0;
         bin_min[row] = bin_capacity + 1;
 
@@ -125,7 +144,7 @@ public class Main
             }
 
             warehouse.add(this.bins[row][max_loaded]);
-
+            this.bins_used++;
             this.bins[row][max_loaded] = new Bin(Main.bin_capacity, this.bins[row][max_loaded].day);
             double m = this.bins[row][0].space_left;
             for(int i = 0; i < row; i++)
@@ -157,14 +176,75 @@ public class Main
     }
 
     void orderLocation()
-    {
+    {   
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the distance to whoich you need to take your stock: ");
+        int distance = sc.nextInt();
+        int day = (distance <= 50)? 3: (distance <= 100)? 2: 1;
+        int col = day - 1;
+        int row = 0;
+        for(int i = warehouse.racks.length - 1; i >= 0; i--)
+        {
+            if(this.warehouse.racks[i][col].top < 4 && this.warehouse.racks[i][col].top > 0);
+            {
+                row = this.warehouse.racks[i][col].top;
+                break;
+            }
+        }
+        if(row == 0 && this.warehouse.racks[row][col].top == 0)
+        {
+            System.out.println("Stock not Found");
+            this.source_col = -1;
+            this.source_row = -1;
+            sc.close();
+            return;
+        }
+        this.source_row = row;
+        this.source_col = col;
+        System.out.println("Row = " + row + ", Col = " + col);
+        sc.close();
+    }
 
+    void printBins()
+    {
+        System.out.println("BINS TABLE");
+        for(int i = 0; i < this.bins.length; i++)
+        {
+            System.out.print("Day " + (i + 1) + ": ");
+            for(int j = 0; j < this.bins[0].length; j++)
+            {
+                System.out.print(bins[i][j].space_left + "   |    ");
+            }
+            System.out.println();
+        }
+    }
+
+    void sourceInIventory()
+    {
+        if(this.source_row < 2)
+        {
+            this.source_row = this.source_row * 2 + 1;
+        }
+        else
+        {
+            this.source_row = this.source_row * 2 - 2;
+        }
+        if(this.source_col < 2)
+        {
+            this.source_col = this.source_col * 2;
+        }
+        else
+        {
+            this.source_col = this.source_col * 2;
+        }
+        System.out.println("Source_Row = " + this.source_row);
+        System.out.println("Source Column = " + this.source_col);
     }
 
     public static void main(String[] args)throws Exception
     {
         DataSetGen.main(args);
-        System.out.println("\n Starting to sort");
+        System.out.println("\nProcessing");
 
         String anim= "|/-\\";
         for (int x =0 ; x <=100 ; x++) 
@@ -173,6 +253,7 @@ public class Main
             System.out.write(data.getBytes());
             Thread.sleep(20);
         }
+        System.out.println("\n");
 
         Main ob = new Main();
         ob.extract();
@@ -180,11 +261,20 @@ public class Main
         Scanner myObj = new Scanner(System.in);
         // System.out.println("\n\nEnter the amount of apples you want to order (in Kg) :- ");
         // double orderAmount = myObj.nextDouble(); 
-        ob.orderLocation();
-        System.out.println("The path of your order of "+orderAmount+" Kg Apples is : -");
+        // System.out.println("The path of your order of "+orderAmount+" Kg Apples is : -");
+        for(int i = 0; i < day; i++)
+        {
+            System.out.println("Trays used for day " + (i + 1) + " = "+ ob.no_of_tray_used[i]);
+        }
         PathAstar astar = new PathAstar(ob.warehouse.inventory);
+        System.out.println("\nTotal Bins Used = " + ob.bins_used + "\n");
+        ob.printBins();
+        ob.warehouse.printRacks();
+        System.out.println("\n\nWareshouse Inventory Representation\n");
         ob.warehouse.print();
-        astar.findPath(1, 1, 3, 4);
+        ob.orderLocation();
+        ob.sourceInIventory();
+        astar.findPath(ob.source_row, ob.source_col, 3, 4);
         myObj.close();
     }
 }

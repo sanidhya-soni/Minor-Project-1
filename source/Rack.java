@@ -18,10 +18,12 @@ public class Rack
         if(hasSpace())
         {
             rack[top++] = bin;
-            System.out.println("Tray added succesfully in rack!");
+            // System.out.println("Bin added succesfully in rack!");
         }
         else
-            System.out.println("Rack is full, Get a new one!");
+        {
+            // System.out.println("Rack is full, Get a new one!");
+        }
     }
 
     void pop()
