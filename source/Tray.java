@@ -17,7 +17,7 @@ public class Tray
         this.capacity = this.row * this.column;
         this.isFull = false;
         this.height = height;
-        System.out.println("New tray added");
+        // System.out.println("New tray added");
     }
 
     void add() {
@@ -25,11 +25,11 @@ public class Tray
         if (this.hasSpace())
         {
             occupied++;
-            System.out.println("Item Added");
+            // System.out.println("Item Added");
         }
         else
         {
-            System.out.println("Is Full");
+            // System.out.println("Is Full");
         }
 
         this.updateStatus();

@@ -19,7 +19,7 @@ public class Bin
         this.isFull = false;
         this.day = day;
         items = new LinkedList<Tray>();
-        System.out.println("New Bin Added");
+        // System.out.println("New Bin Added");
     }
 
     void add(int height)

@@ -61,6 +61,21 @@ public class Warehouse
         }
     }
 
+    void printRacks()
+    {
+        System.out.println("\nRacks Status");
+        System.out.println("Day 1  Day 2  Day 3");
+        for(int i = 0; i < this.racks.length; i++)
+        {
+            for(int j = 0; j < this.racks[0].length; j++)
+            {
+                System.out.print(racks[i][j].capacity - racks[i][j].top + "   |   ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
     // public static void main(String[] args) {
     //     Warehouse ob = new Warehouse(5, 5);
     //     for(int i = 0; i < ob.row * 2 - 1; i++)
