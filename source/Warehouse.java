@@ -26,15 +26,15 @@ public class Warehouse
         }
     }
 
-    // public static void main(String[] args) {
-    //     Warehouse ob = new Warehouse(5, 5);
-    //     for(int i = 0; i < ob.row * 2 - 1; i++)
-    //     {
-    //         for(int j = 0; j < ob.col * 2 - 1; j++)
-    //         {
-    //             System.out.print(ob.inventory[i][j] + " ");
-    //         }
-    //         System.out.println();
-    //     }
-    // }
+    public static void main(String[] args) {
+        Warehouse ob = new Warehouse(5, 5);
+        for(int i = 0; i < ob.row * 2 - 1; i++)
+        {
+            for(int j = 0; j < ob.col * 2 - 1; j++)
+            {
+                System.out.print(ob.inventory[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
 }
