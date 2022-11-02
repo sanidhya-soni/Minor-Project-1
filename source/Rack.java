@@ -1,42 +1,42 @@
-// package source;
+package source;
 
-// public class Rack
-// {
-//     int section_capacity;
-//     int sections;
-//     Tray[][] rack;
+public class Rack
+{
+    Bin[] rack;
+    int top;
+    int capacity;
 
-//     Rack(int sections, int section_capacity)
-//     {
-//         this.sections = sections;
-//         this.section_capacity = section_capacity;
-//         this.rack = new Tray[this.sections][this.section_capacity];
-//     }
+    Rack(int capacity)
+    {
+        this.rack = new Bin[capacity];
+        this.top = 0;
+        this.capacity = capacity;
+    }
 
-//     void add(Tray tray)
-//     {
-//         if(hasSpace())
-//         {
-//             rack[top++] = tray;
-//             System.out.println("Tray added succesfully in rack!");
-//         }
-//         else
-//             System.out.println("Rack is full, Get a new one!");
-//     }
+    void add(Bin bin)
+    {
+        if(hasSpace())
+        {
+            rack[top++] = bin;
+            System.out.println("Tray added succesfully in rack!");
+        }
+        else
+            System.out.println("Rack is full, Get a new one!");
+    }
 
-//     void pop()
-//     {
-//         if(!hasSpace())
-//         {
-//             top--;
-//             System.out.println("Tray removed succesfully!");
-//         }
-//         else
-//             System.out.println("Rack is Empty!");
-//     }
+    void pop()
+    {
+        if(!hasSpace())
+        {
+            top--;
+            System.out.println("Tray removed succesfully!");
+        }
+        else
+            System.out.println("Rack is Empty!");
+    }
 
-//     boolean hasSpace()
-//     {
-//         return this.top < this.capacity;
-//     }
-// }
+    boolean hasSpace()
+    {
+        return this.top < this.capacity;
+    }
+}

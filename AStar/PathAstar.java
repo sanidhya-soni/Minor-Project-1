@@ -8,9 +8,9 @@ import java.util.PriorityQueue;
 public class PathAstar
 {
 
-    int[][] matrix;
+    public int[][] matrix;
 
-    PathAstar(int[][] matrix)
+    public PathAstar(int[][] matrix)
     {
         this.matrix = matrix;
     }
@@ -90,7 +90,7 @@ public class PathAstar
         System.out.println("");
     }
 
-    void assignBranches(Node[][] n, int row, int col)
+    public void assignBranches(Node[][] n, int row, int col)
     {
         // for up
         if(row - 1 >= 0 && this.matrix[row - 1][col] == 0 && matrix[row][col] == 0)
@@ -117,8 +117,18 @@ public class PathAstar
         }
     }
     
-    void findPath()
+    public void findPath(int start_row, int start_col, int end_row, int end_col)
     {
+
+        // for(int i = 0; i < matrix.length; i++)
+        // {
+        //     for(int j = 0; j < matrix[0].length; j++)
+        //     {
+        //         System.out.print(matrix[i][j] + " ");
+        //     }
+        //     System.out.println();
+        // }
+
         Node[][] n = new Node[this.matrix.length][this.matrix[0].length];
     
         for(int i = 0; i < n.length; i++)
@@ -140,18 +150,19 @@ public class PathAstar
             }
         }
 
-        Node res = aStar(n[0][0], n[1][2]);
+        Node res = aStar(n[start_row][start_col], n[end_row][end_col]);
         printPath(res);
     }
 
-    public static void main(String[] args) {
-        int a[][] = {{0, 0, 0, 0},
-                     {0, 0, 0, 0},
-                     {1, 0, 0, 1},
-                     {1, 0, 0, 0}};
-        PathAstar ob = new PathAstar(a);
-        ob.findPath();
-    }
+    // public static void main(String[] args) {
+    //     int a[][] = {{1, 0, 1, 0, 1},
+    //                  {0, 0, 0, 0, 0},
+    //                  {1, 0, 1, 0, 1},
+    //                  {0, 0, 0, 0, 0},
+    //                  {1, 0, 1, 0, 1}};
+    //     PathAstar ob = new PathAstar(a);
+    //     ob.findPath(0, 1, 3, 4);
+    // }
 }
 
 // 0 - Path        

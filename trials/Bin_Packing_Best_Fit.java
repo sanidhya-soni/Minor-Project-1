@@ -1,4 +1,4 @@
-package source;
+package trials;
 
 public class Bin_Packing_Best_Fit
 {

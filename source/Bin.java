@@ -1,18 +1,24 @@
 package source;
 
+import java.util.LinkedList;
+
 public class Bin
 {
     double max_capacity;
     double occupied;
     double space_left;
     boolean isFull;
+    int day;
+    LinkedList<Tray> items;
 
-    Bin(double capacity)
+    Bin(double capacity, int day)
     {
         this.max_capacity = capacity;
         this.occupied = 0;
         this.space_left = this.max_capacity;
         this.isFull = false;
+        this.day = day;
+        items = new LinkedList<Tray>();
         System.out.println("New Bin Added");
     }
 

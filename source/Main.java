@@ -14,6 +14,7 @@ public class Main
 
     Tray[][] tray_table;
     Bin[][] bins;
+    Warehouse warehouse;
     static int size = 3;
     static int day = 3;
     String begin_date;
@@ -36,34 +37,7 @@ public class Main
         // day = 3, size = 3
         tray_table = new Tray[day][size];
         bins = new Bin[max_row][max_col];
-    }
-
-    public static void main(String[] args)throws Exception
-    {
-       
-
-        DataSetGen.main(args);
-        System.out.println("\n Starting to sort");
-
-        String anim= "|/-\\";
-        for (int x =0 ; x <=100 ; x++) 
-        {
-            String data = "\r" + anim.charAt(x % anim.length()) + " " + x;
-            System.out.write(data.getBytes());
-            Thread.sleep(50);
-        }
-
-        Main ob = new Main();
-        ob.extract();
-        
-        Scanner myObj = new Scanner(System.in);
-        System.out.println("\n\nEnter the amount of apples you want to order (in Kg) :- ");
-        double orderAmount = myObj.nextDouble(); 
-        System.out.println("Your order is present on (---rack----bin)");
-        System.out.println("The path of your order of "+orderAmount+" Kg Apples is : -");
-        PathAstar.main(args);
-
-        myObj.close();
+        warehouse = new Warehouse(3, 3);
     }
 
     void extract() throws IOException, ParseException
@@ -90,7 +64,7 @@ public class Main
         {
             for(int j = 0; j < max_col; j++)
             {
-                this.bins[i][j] = new Bin(Main.bin_capacity);
+                this.bins[i][j] = new Bin(Main.bin_capacity, i);
             }
         }
 
@@ -119,6 +93,7 @@ public class Main
                 this.tray_table[row][col].add();
             }
         }
+        br.close();
     }
 
     void addToBinTable(Tray t, int row, int col)
@@ -149,11 +124,9 @@ public class Main
                 }
             }
 
-            /*
-             * Add this bin to warehouse
-             */
+            warehouse.add(this.bins[row][max_loaded]);
 
-            this.bins[row][max_loaded] = new Bin(Main.bin_capacity);
+            this.bins[row][max_loaded] = new Bin(Main.bin_capacity, this.bins[row][max_loaded].day);
             double m = this.bins[row][0].space_left;
             for(int i = 0; i < row; i++)
             {
@@ -169,6 +142,7 @@ public class Main
         else
         {
             this.bins[row][bin].add(t.height);
+            this.bins[row][bin].items.add(t);
             bin_min[row] = this.bins[row][bin].space_left;
         }
     }
@@ -180,5 +154,37 @@ public class Main
         Date d2 = new SimpleDateFormat(dtf).parse(s2);
         long diff = d2.getTime() - d1.getTime();
         return (int)TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+    }
+
+    void orderLocation()
+    {
+
+    }
+
+    public static void main(String[] args)throws Exception
+    {
+        DataSetGen.main(args);
+        System.out.println("\n Starting to sort");
+
+        String anim= "|/-\\";
+        for (int x =0 ; x <=100 ; x++) 
+        {
+            String data = "\r" + anim.charAt(x % anim.length()) + " " + x;
+            System.out.write(data.getBytes());
+            Thread.sleep(20);
+        }
+
+        Main ob = new Main();
+        ob.extract();
+        
+        Scanner myObj = new Scanner(System.in);
+        // System.out.println("\n\nEnter the amount of apples you want to order (in Kg) :- ");
+        // double orderAmount = myObj.nextDouble(); 
+        ob.orderLocation();
+        System.out.println("The path of your order of "+orderAmount+" Kg Apples is : -");
+        PathAstar astar = new PathAstar(ob.warehouse.inventory);
+        ob.warehouse.print();
+        astar.findPath(1, 1, 3, 4);
+        myObj.close();
     }
 }
