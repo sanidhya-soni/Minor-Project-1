@@ -31,6 +31,7 @@ public class Bin
         }
     }
 
+ 
     boolean hasSpace()
     {
         return !isFull;
