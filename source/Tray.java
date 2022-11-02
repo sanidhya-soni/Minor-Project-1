@@ -61,6 +61,7 @@ public class Tray
         return this.occupied == this.capacity;
     }
 
+    
     void updateStatus()
     {
         this.isFull = this.occupied == this.capacity;
