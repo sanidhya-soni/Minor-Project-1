@@ -1,5 +1,6 @@
 package source;
-
+import java.util.Scanner;
+import AStar.PathAstar;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -37,10 +38,32 @@ public class Main
         bins = new Bin[max_row][max_col];
     }
 
-    public static void main(String[] args)throws IOException, ParseException
+    public static void main(String[] args)throws Exception
     {
+       
+
+        DataSetGen.main(args);
+        System.out.println("\n Starting to sort");
+
+        String anim= "|/-\\";
+        for (int x =0 ; x <=100 ; x++) 
+        {
+            String data = "\r" + anim.charAt(x % anim.length()) + " " + x;
+            System.out.write(data.getBytes());
+            Thread.sleep(50);
+        }
+
         Main ob = new Main();
         ob.extract();
+        
+        Scanner myObj = new Scanner(System.in);
+        System.out.println("\n\nEnter the amount of apples you want to order (in Kg) :- ");
+        double orderAmount = myObj.nextDouble(); 
+        System.out.println("Your order is present on (---rack----bin)");
+        System.out.println("The path of your order of "+orderAmount+" Kg Apples is : -");
+        PathAstar.main(args);
+
+        myObj.close();
     }
 
     void extract() throws IOException, ParseException
