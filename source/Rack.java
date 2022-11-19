@@ -26,16 +26,16 @@ public class Rack
         }
     }
 
-    void pop()
-    {
-        if(!hasSpace())
-        {
-            top--;
-            System.out.println("Tray removed succesfully!");
-        }
-        else
-            System.out.println("Rack is Empty!");
-    }
+    // void pop()
+    // {
+    //     if(!hasSpace())
+    //     {
+    //         top--;
+    //         System.out.println("Tray removed succesfully!");
+    //     }
+    //     else
+    //         System.out.println("Rack is Empty!");
+    // }
 
     boolean hasSpace()
     {

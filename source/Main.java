@@ -22,6 +22,8 @@ public class Main
     String end_date;
     static int max_row = 3;
     static int max_col = 3;
+    static int warehouse_row = 3;
+    static int warehouse_col = 3;
     static int bin_capacity = 500;
     int bins_used;
     int source_row;
@@ -41,7 +43,7 @@ public class Main
         // day = 3, size = 3
         tray_table = new Tray[day][size];
         bins = new Bin[max_row][max_col];
-        warehouse = new Warehouse(3, 3);
+        warehouse = new Warehouse(warehouse_row, warehouse_col);
         bins_used = 0;
         no_of_tray_used = new int[day];
     }
@@ -178,7 +180,7 @@ public class Main
     void orderLocation()
     {   
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter the distance to whoich you need to take your stock: ");
+        System.out.print("Enter the distance to which you need to take your stock: ");
         int distance = sc.nextInt();
         int day = (distance <= 50)? 3: (distance <= 100)? 2: 1;
         int col = day - 1;
@@ -229,14 +231,9 @@ public class Main
         {
             this.source_row = this.source_row * 2 - 2;
         }
-        if(this.source_col < 2)
-        {
-            this.source_col = this.source_col * 2;
-        }
-        else
-        {
-            this.source_col = this.source_col * 2;
-        }
+        
+        this.source_col = this.source_col * 2;
+        
         System.out.println("Source_Row = " + this.source_row);
         System.out.println("Source Column = " + this.source_col);
     }
@@ -258,10 +255,6 @@ public class Main
         Main ob = new Main();
         ob.extract();
         
-        Scanner myObj = new Scanner(System.in);
-        // System.out.println("\n\nEnter the amount of apples you want to order (in Kg) :- ");
-        // double orderAmount = myObj.nextDouble(); 
-        // System.out.println("The path of your order of "+orderAmount+" Kg Apples is : -");
         for(int i = 0; i < day; i++)
         {
             System.out.println("Trays used for day " + (i + 1) + " = "+ ob.no_of_tray_used[i]);
@@ -275,6 +268,5 @@ public class Main
         ob.orderLocation();
         ob.sourceInIventory();
         astar.findPath(ob.source_row, ob.source_col, 3, 4);
-        myObj.close();
     }
 }
