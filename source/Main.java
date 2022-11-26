@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 public class Main
 {
 
+    Scanner sc = new Scanner(System.in);
     Tray[][] tray_table;
     int[] no_of_tray_used;
     Bin[][] bins;
@@ -40,6 +41,12 @@ public class Main
 
     Main()
     {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the Range of Date of Stock in DD/MM/YYYY format");
+        System.out.print("Start Date: ");
+        begin_date = sc.nextLine();
+        System.out.print("End Date: ");
+        end_date = sc.nextLine();
         // day = 3, size = 3
         tray_table = new Tray[day][size];
         bins = new Bin[max_row][max_col];
@@ -178,8 +185,7 @@ public class Main
     }
 
     void orderLocation()
-    {   
-        Scanner sc = new Scanner(System.in);
+    {
         System.out.print("Enter the distance to which you need to take your stock: ");
         int distance = sc.nextInt();
         int day = (distance <= 50)? 3: (distance <= 100)? 2: 1;
