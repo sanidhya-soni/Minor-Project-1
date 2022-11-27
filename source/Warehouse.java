@@ -4,15 +4,16 @@ public class Warehouse
 {
     int inventory[][];
     Rack[][] racks;
-    static int rack_capacity = 4;
+    int rack_capacity;
     int current_rack[];
     
     int row, col;
 
-    Warehouse(int row, int col)
+    Warehouse(int row, int col, int rack_capacity)
     {
         this.row = row;
         this.col = col;
+        this.rack_capacity = rack_capacity;
         this.inventory = new int[this.row * 2 - 1][this.col * 2 - 1];
         this.racks = new Rack[row][col];
         this.current_rack = new int[row];
@@ -23,10 +24,12 @@ public class Warehouse
                 if(i % 2 == 0 && j % 2 == 0)
                 {
                     this.inventory[i][j] = 1;
+                    // this.inventory[i][j] = 0;
                 }
                 else
                 {
                     this.inventory[i][j] = 0;
+                    // this.inventory[i][j] = 1;
                 }
             }
         }
@@ -42,10 +45,24 @@ public class Warehouse
 
     void add(Bin bin)
     {
-        racks[this.current_rack[bin.day]][bin.day].add(bin);
-        if(this.current_rack[bin.day] >= rack_capacity)
+        try
         {
-            this.current_rack[bin.day]++;
+            if(this.current_rack[bin.day] <= row && racks[this.current_rack[bin.day]][bin.day].hasSpace())
+            {
+                racks[this.current_rack[bin.day]][bin.day].add(bin);
+            }
+            else
+            {
+                this.current_rack[bin.day]++;
+                if(!(this.current_rack[bin.day] >= row))
+                    add(bin);
+            }
+            if(!racks[this.current_rack[bin.day]][bin.day].hasSpace())
+                    this.current_rack[bin.day]++;
+        }
+        catch(IndexOutOfBoundsException e)
+        {
+            // System.out.println("Cant accomodate for this day");
         }
     }
 

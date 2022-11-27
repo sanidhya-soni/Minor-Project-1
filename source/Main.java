@@ -1,6 +1,5 @@
 package source;
 import java.util.Scanner;
-import AStar.PathAstar;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -13,46 +12,79 @@ public class Main
 {
 
     Scanner sc = new Scanner(System.in);
-    Tray[][] tray_table;
-    int[] no_of_tray_used;
-    Bin[][] bins;
-    Warehouse warehouse;
-    static int size = 3;
-    static int day = 3;
-    String begin_date;
-    String end_date;
-    static int max_row = 3;
-    static int max_col = 3;
-    static int warehouse_row = 3;
-    static int warehouse_col = 3;
-    static int bin_capacity = 500;
+    
+    int size = 3;
+    int day;
+    int bin_row;
+    int bin_col;
+    int warehouse_row;
+    int warehouse_col;
+    int total_fruits;
+    int rack_capacity;
+    int bin_capacity;
     int bins_used;
     int source_row;
     int source_col;
+    int[] no_of_tray_used;
+    Tray[][] tray_table;
+    Bin[][] bins;
+    Warehouse warehouse;
+    String begin_date;
+    String end_date;
 
-    static double[] bin_min = new double[max_row];
-    static
+    double[] bin_min = new double[bin_row];
+    
+    Main() throws ParseException
     {
-        for(int i = 0; i < bin_min.length; i++)
-        {
-            bin_min[i] = bin_capacity + 1;
-        }
-    }
-
-    Main()
-    {
-        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Rows in a warehouse: ");
+        warehouse_row = sc.nextInt();
+        System.out.print("Enter Columns in a warehouse: ");
+        warehouse_col = sc.nextInt();
+        System.out.print("Enter rack capacity: ");
+        rack_capacity = sc.nextInt();
+        warehouse = new Warehouse(warehouse_row, warehouse_col, rack_capacity);
+        System.out.print("Enter Bin Height Capacity: ");
+        bin_capacity = sc.nextInt();
+        // warehouse_col = day;
         System.out.println("Enter the Range of Date of Stock in DD/MM/YYYY format");
+        sc.nextLine();
         System.out.print("Start Date: ");
         begin_date = sc.nextLine();
         System.out.print("End Date: ");
         end_date = sc.nextLine();
+        System.out.print("Enter total fruits arriving: ");
+        total_fruits = sc.nextInt();
         // day = 3, size = 3
+        day = getDifferenceDays(begin_date, end_date) + 1;
         tray_table = new Tray[day][size];
-        bins = new Bin[max_row][max_col];
-        warehouse = new Warehouse(warehouse_row, warehouse_col);
+        bin_row = day;
+        bin_col = 5;
+        bins = new Bin[bin_row][bin_col];
         bins_used = 0;
         no_of_tray_used = new int[day];
+        bin_min = new double[bin_row];
+    }
+
+    Main(String[] args) throws ParseException
+    {
+        warehouse_row = Integer.parseInt(args[0]);
+        warehouse_col = Integer.parseInt(args[1]);
+        rack_capacity = Integer.parseInt(args[2]);
+        warehouse = new Warehouse(warehouse_row, warehouse_col, rack_capacity);
+        bin_capacity = Integer.parseInt(args[3]);
+        // warehouse_col = day;
+        begin_date = args[4];
+        end_date = args[5];
+        total_fruits = Integer.parseInt(args[6]);
+        // day = 3, size = 3
+        day = getDifferenceDays(begin_date, end_date) + 1;
+        tray_table = new Tray[day][size];
+        bin_row = day;
+        bin_col = 5;
+        bins = new Bin[bin_row][bin_col];
+        bins_used = 0;
+        no_of_tray_used = new int[day];
+        bin_min = new double[bin_row];
     }
 
     void extract() throws IOException, ParseException
@@ -67,19 +99,19 @@ public class Main
 
         int dateDiff = this.getDifferenceDays(begin_date, end_date);
 
-        for(int i = 0; i < day; i++)
+        for(int i = 0; i < this.day; i++)
         {
-            for(int j = 0; j < size; j++)
+            for(int j = 0; j < this.size; j++)
             {
                 int height = (j == 0)? 50: (j == 1)? 75: 100;
                 this.tray_table[i][j] = new Tray(size + 1 - j, size + 1 - j, height);
             }
         }
-        for(int i = 0; i < max_row; i++)
+        for(int i = 0; i < bin_row; i++)
         {
-            for(int j = 0; j < max_col; j++)
+            for(int j = 0; j < bin_col; j++)
             {
-                this.bins[i][j] = new Bin(Main.bin_capacity, i);
+                this.bins[i][j] = new Bin(this.bin_capacity, i);
             }
         }
 
@@ -90,10 +122,12 @@ public class Main
 
             // System.out.println(ds.day + ", " + ds.month + ", " + ds.year + ", " + ds.size);
 
-            dateDiff = this.getDifferenceDays(begin_date, ds.day + " " + ds.month + " 20" + ds.year);
+            dateDiff = this.getDifferenceDays(this.begin_date, ds.day + "/" + ds.month + "/20" + ds.year);
             int row = dateDiff;
+            // System.out.println("Datediff: " + dateDiff);
             int col = (ds.size == 50)? 0: ((ds.size == 75)? 1: 2);
 
+            // System.out.println("Row: " + row + " col: " + col);
             if(this.tray_table[row][col].hasSpace())
             {
                 this.tray_table[row][col].add();
@@ -119,6 +153,7 @@ public class Main
             {
                 if(bins[i][j].space_left < 50)
                 {
+                    // System.out.println("Bin got full");
                     warehouse.add(bins[i][j]);
                     bins[i][j] = new Bin(bins[i][j].max_capacity, bins[i][j].day);
                     this.bins_used++;
@@ -129,7 +164,7 @@ public class Main
         int bin = 0;
         bin_min[row] = bin_capacity + 1;
 
-        for(int i = 0; i < max_col; i++)
+        for(int i = 0; i < bin_col; i++)
         {
             if(this.bins[row][i].hasSpace(this.tray_table[row][col].height) && this.bins[row][i].space_left - this.tray_table[row][col].height < bin_min[row])
             {
@@ -144,7 +179,7 @@ public class Main
         {
             int max_loaded = 0;
 
-            for(int i = 1; i < max_col; i++)
+            for(int i = 1; i < bin_col; i++)
             {
                 if(this.bins[row][max_loaded].occupied < this.bins[row][i].occupied)
                 {
@@ -154,7 +189,7 @@ public class Main
 
             warehouse.add(this.bins[row][max_loaded]);
             this.bins_used++;
-            this.bins[row][max_loaded] = new Bin(Main.bin_capacity, this.bins[row][max_loaded].day);
+            this.bins[row][max_loaded] = new Bin(this.bin_capacity, this.bins[row][max_loaded].day);
             double m = this.bins[row][0].space_left;
             for(int i = 0; i < row; i++)
             {
@@ -177,7 +212,7 @@ public class Main
 
     int getDifferenceDays(String s1, String s2) throws ParseException
     {
-        String dtf = "dd mm yyyy";
+        String dtf = "dd/mm/yyyy";
         Date d1 = new SimpleDateFormat(dtf).parse(s1);
         Date d2 = new SimpleDateFormat(dtf).parse(s2);
         long diff = d2.getTime() - d1.getTime();
@@ -186,16 +221,24 @@ public class Main
 
     void orderLocation()
     {
-        System.out.print("Enter the distance to which you need to take your stock: ");
-        int distance = sc.nextInt();
-        int day = (distance <= 50)? 3: (distance <= 100)? 2: 1;
-        int col = day - 1;
+        System.out.print("No. of days old stock is required: ");
+        int days_old = sc.nextInt();
+        int col = days_old - 1;
         int row = 0;
-        for(int i = warehouse.racks.length - 1; i >= 0; i--)
+        // for(int i = warehouse.racks.length - 1; i >= 0; i--)
+        // {
+        //     if(this.warehouse.racks[i][col].top < 4 && this.warehouse.racks[i][col].top > 0);
+        //     {
+        //         row = this.warehouse.racks[i][col].top;
+        //         break;
+        //     }
+        // }
+
+        for(int i = this.warehouse_row - 1; i >= 0; i--)
         {
-            if(this.warehouse.racks[i][col].top < 4 && this.warehouse.racks[i][col].top > 0);
+            if(warehouse.racks[i][col].top > 0)
             {
-                row = this.warehouse.racks[i][col].top;
+                row = i;
                 break;
             }
         }
@@ -229,16 +272,27 @@ public class Main
 
     void sourceInIventory()
     {
-        if(this.source_row < 2)
+        this.source_row = this.source_row * 2;
+        this.source_col = this.source_col * 2;
+
+        if(this.source_row < this.warehouse.inventory.length - 1 && this.source_col < this.warehouse.inventory[0].length - 1)
         {
-            this.source_row = this.source_row * 2 + 1;
+            this.source_row = this.source_row + 1;
+            this.source_col = this.source_col + 1;
+        }
+        else if(this.source_row == this.warehouse.inventory.length - 1)
+        {
+            this.source_row = this.source_row - 1;
+        }
+        else if(this.source_col == this.warehouse.inventory[0].length - 1)
+        {
+            this.source_col = this.source_col - 1;
         }
         else
         {
-            this.source_row = this.source_row * 2 - 2;
+            this.source_row = this.source_row - 1;
+            this.source_col = this.source_col - 1;
         }
-        
-        this.source_col = this.source_col * 2;
         
         System.out.println("Source_Row = " + this.source_row);
         System.out.println("Source Column = " + this.source_col);
@@ -246,7 +300,11 @@ public class Main
 
     public static void main(String[] args)throws Exception
     {
-        DataSetGen.main(args);
+        // Main ob = new Main(args);
+        Main ob = new Main();
+        // ob.extractInput(args);
+        DataSetGen dsg = new DataSetGen();
+        dsg.dataSetGen(ob.begin_date, ob.end_date, ob.total_fruits);
         System.out.println("\nProcessing");
 
         String anim= "|/-\\";
@@ -257,11 +315,9 @@ public class Main
             Thread.sleep(20);
         }
         System.out.println("\n");
-
-        Main ob = new Main();
         ob.extract();
         
-        for(int i = 0; i < day; i++)
+        for(int i = 0; i < ob.day; i++)
         {
             System.out.println("Trays used for day " + (i + 1) + " = "+ ob.no_of_tray_used[i]);
         }
@@ -273,6 +329,11 @@ public class Main
         ob.warehouse.print();
         ob.orderLocation();
         ob.sourceInIventory();
-        astar.findPath(ob.source_row, ob.source_col, 3, 4);
+        astar.findPath(ob.source_row, ob.source_col, ob.warehouse.inventory.length - 2, ob.warehouse.inventory[0].length - 1);
+    }
+
+    void extractInput(String[] args)
+    {
+
     }
 }

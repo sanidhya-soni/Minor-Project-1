@@ -24,11 +24,11 @@ public class DataSetGen
         return list;
     }
  
-    public static void main(String[] args) throws Exception   
+    public void dataSetGen(String begin, String end, int total_entries) throws Exception   
     {   
-        String begin = "1/1/2022";
-        String end = "3/1/2022";
- 
+        // String begin = "1/1/2022";
+        // String end = "3/1/2022";
+        System.out.println(begin + " " + end);
         LinkedList<Date> hitList = searchBetweenDates(
         	    new SimpleDateFormat("dd/MM/yyyy").parse(begin),
         	    new SimpleDateFormat("dd/MM/yyyy").parse(end));
@@ -37,10 +37,10 @@ public class DataSetGen
         for(int i=0; i<hitList.size(); i++)
             comboDates[i] = new SimpleDateFormat("dd/MM/yyyy").format(((Date)hitList.get(i)));
         
-        random(comboDates, begin, end);
+        random(comboDates, begin, end, total_entries);
     }
 
-    static void random(String[] s, String begin, String end)throws IOException
+    static void random(String[] s, String begin, String end, int total_entries)throws IOException
     {
         String path = "source//data.csv";
         File file = new File(path);
@@ -77,12 +77,12 @@ public class DataSetGen
         begin = begin_backup;
         end = end_backup;
 
-        bw.write(b_date + " " + b_month + " " + "20" + b_year + "\n");
-        bw.write(e_date + " " + e_month + " " + "20" + e_year + "\n");
+        bw.write(b_date + "/" + b_month + "/" + "20" + b_year + "\n");
+        bw.write(e_date + "/" + e_month + "/" + "20" + e_year + "\n");
 
         String[] sz = {"050", "075", "100"};
 
-        for(int i = 0; i < 500; i++)
+        for(int i = 0; i < total_entries; i++)
         {
             String comp_date = s[ThreadLocalRandom.current().nextInt(0, s.length)];
             String date = comp_date.substring(0, comp_date.indexOf("/"));

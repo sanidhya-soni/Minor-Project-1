@@ -1,4 +1,4 @@
-package AStar;
+package source;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -138,6 +138,7 @@ public class PathAstar
                 n[i][j] = new Node(this.matrix[0].length - j - 1);
                 // System.out.println(matrix[0].length - j - 1);
             }
+            // System.out.println();
         }
 
         n[0][0].g = 0;
@@ -155,13 +156,17 @@ public class PathAstar
     }
 
     // public static void main(String[] args) {
-    //     int a[][] = {{1, 0, 1, 0, 1},
-    //                  {0, 0, 0, 0, 0},
-    //                  {1, 0, 1, 0, 1},
-    //                  {0, 0, 0, 0, 0},
-    //                  {1, 0, 1, 0, 1}};
+    //     int a[][] = {{1, 0, 1, 0, 1, 0, 1, 0, 1},
+    //                  {0, 0, 0, 0, 0, 0, 0, 0, 0},
+    //                  {1, 0, 1, 0, 1, 0, 1, 0, 1},
+    //                  {0, 0, 0, 0, 0, 0, 0, 0, 0},
+    //                  {1, 0, 1, 0, 1, 0, 1, 0, 1},
+    //                  {0, 0, 0, 0, 0, 0, 0, 0, 0},
+    //                  {1, 0, 1, 0, 1, 0, 1, 0, 1},
+    //                  {0, 0, 0, 0, 0, 0, 0, 0, 0},
+    //                  {1, 0, 1, 0, 1, 0, 1, 0, 1}};
     //     PathAstar ob = new PathAstar(a);
-    //     ob.findPath(0, 1, 3, 4);
+    //     ob.findPath(6, 2, 7, 8);
     // }
 }
 
