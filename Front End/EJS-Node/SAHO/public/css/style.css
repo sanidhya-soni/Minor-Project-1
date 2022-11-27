@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+body {
+  padding: 0px;
+  margin: 0px;
+  background-color: #000000;
+}
+
+.navbar {
+  background-color: rgba(38, 40, 43, 0.3);
+  padding: 0px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 64px;
+  letter-spacing: 0.12em;
+}
+
+.navbar-brand {
+  padding: 0px 0px 0px 1.5rem;
+  color: #fff;
+}
+
+.navbar-toggler {
+  padding: 0px;
+}
+
+.nav-link {
+  color: #fff;
+}
+
+.nav-link:hover {
+  color: #dadada;
+}
+
+
+
+.cc {
+  background: linear-gradient(180deg, #fff 0%, rgba(255, 47, 0, 0) 100%);
+  width: auto;
+  height: 641px;
+}
+
+.cc2 {
+  background: linear-gradient(3600deg, #fff 0%, rgba(255, 47, 0, 0) 100%);
+  width: auto;
+  height: 641px;
+}
+
+.hh {
+  display: inline;
+  font-size: 450px;
+  background: -webkit-linear-gradient(#eee, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.h1 {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 64px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  color: #F7F7F7;
+}
+
+.h12 {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 64px;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+
+.p {
+  color: #F7F7F7;
+  font-size: 20px;
+}
+
+.moti {
+  border-radius: 25px;
+  width: 700px;
+}
+
+.rainbow-text {
+  /* Create a conic gradient. */
+  /* Double percentages to avoid blur (#000 10%, #fff 10%, #fff 20%, ...). */
+  background: #CA4246;
+  background-color: #CA4246;
+  background: conic-gradient(#CA4246 16.666%,
+      #E16541 16.666%,
+      #E16541 33.333%,
+      #F18F43 33.333%,
+      #F18F43 50%,
+      #8B9862 50%,
+      #8B9862 66.666%,
+      #476098 66.666%,
+      #476098 83.333%,
+      #A7489B 83.333%);
+
+  /* Set thee background size and repeat properties. */
+  background-size: 57%;
+  background-repeat: repeat;
+
+  /* Use the text as a mask for the background. */
+  /* This will show the gradient as a text color rather than element bg. */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Animate the text when loading the element. */
+  /* This animates it on page load and when hovering out. */
+  animation: rainbow-text-animation-rev 0.5s ease forwards;
+
+  cursor: pointer;
+}
+
+/* Add animation on hover. */
+.rainbow-text:hover {
+  animation: rainbow-text-animation 0.5s ease forwards;
+}
+
+/* Move the background and make it larger. */
+/* Animation shown when hovering over the text. */
+@keyframes rainbow-text-animation {
+  0% {
+    background-size: 57%;
+    background-position: 0 0;
+  }
+
+  20% {
+    background-size: 57%;
+    background-position: 0 1em;
+  }
+
+  100% {
+    background-size: 300%;
+    background-position: -9em 1em;
+  }
+}
+
+/* Move the background and make it smaller. */
+/* Animation shown when entering the page and after the hover animation. */
+@keyframes rainbow-text-animation-rev {
+  0% {
+    background-size: 300%;
+    background-position: -9em 1em;
+  }
+
+  20% {
+    background-size: 57%;
+    background-position: 0 1em;
+  }
+
+  100% {
+    background-size: 57%;
+    background-position: 0 0;
+  }
+}
+
+
+footer {
+  height: auto;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding-top: 40px;
+  color: #fff;
+}
+
+.footer-bottom {
+  background: #000;
+  width: 100vw;
+  padding: 20px;
+  padding-bottom: 40px;
+  text-align: center;
+}
+
+.footer-bottom p {
+  float: left;
+  font-size: 14px;
+  word-spacing: 2px;
+  text-transform: capitalize;
+}
+
+.footer-bottom p a {
+  color: #44bae8;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.footer-bottom span {
+  text-transform: uppercase;
+  opacity: .4;
+  font-weight: 200;
+}
+
+.footer-menu {
+  float: right;
+
+}
+
+.footer-menu ul {
+  display: flex;
+}
+
+.footer-menu ul li {
+  padding-right: 10px;
+  display: block;
+}
+
+.footer-menu ul li a {
+  color: #cfd2d6;
+  text-decoration: none;
+}
+
+.footer-menu ul li a:hover {
+  color: #27bcda;
+}
+
+@media (max-width:500px) {
+  .footer-menu ul {
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+}
