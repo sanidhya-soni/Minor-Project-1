@@ -234,6 +234,12 @@ public class Main
         //     }
         // }
 
+        if(days_old > this.day)
+        {
+            this.source_col = -1;
+            this.source_row = -1;
+            return;
+        }
         for(int i = this.warehouse_row - 1; i >= 0; i--)
         {
             if(warehouse.racks[i][col].top > 0)
@@ -244,7 +250,7 @@ public class Main
         }
         if(row == 0 && this.warehouse.racks[row][col].top == 0)
         {
-            System.out.println("Stock not Found");
+            // System.out.println("Stock not Found");
             this.source_col = -1;
             this.source_row = -1;
             sc.close();
@@ -328,6 +334,11 @@ public class Main
         System.out.println("\n\nWareshouse Inventory Representation\n");
         ob.warehouse.print();
         ob.orderLocation();
+        if(ob.source_row == -1 && ob.source_col == -1)
+        {
+            System.out.println("Stock isn't Available");
+            return;
+        }
         ob.sourceInIventory();
         astar.findPath(ob.source_row, ob.source_col, ob.warehouse.inventory.length - 2, ob.warehouse.inventory[0].length - 1);
     }
