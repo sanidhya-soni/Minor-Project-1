@@ -256,6 +256,10 @@ public class Main
             sc.close();
             return;
         }
+        else
+        {
+            this.noOfBinsNeeded(days_old);
+        }
         this.source_row = row;
         this.source_col = col;
         System.out.println("Row = " + row + ", Col = " + col);
@@ -304,6 +308,14 @@ public class Main
         System.out.println("Source Column = " + this.source_col);
     }
 
+    void noOfBinsNeeded(int day)
+    {
+        System.out.print("Enter No. of Bins required: ");
+        int bins_needed = sc.nextInt();
+
+        warehouse.dispatch(bins_needed, day);
+    }
+
     public static void main(String[] args)throws Exception
     {
         // Main ob = new Main(args);
@@ -341,6 +353,7 @@ public class Main
         }
         ob.sourceInIventory();
         astar.findPath(ob.source_row, ob.source_col, ob.warehouse.inventory.length - 2, ob.warehouse.inventory[0].length - 1);
+        ob.warehouse.printRacks();
     }
 
     void extractInput(String[] args)

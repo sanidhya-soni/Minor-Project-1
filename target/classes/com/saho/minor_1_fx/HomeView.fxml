@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="1094.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.saho.minor_1_fx.HomeViewController">
+    <children>
+        <Label layoutX="173.0" layoutY="25.0" styleClass="rainbow-text" text="SA">
+            <font>
+                <Font size="200.0" />
+            </font>
+            <textFill>
+                <LinearGradient endX="1.0" endY="1.0">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color />
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color red="1.0" green="1.0" blue="1.0" />
+                            </color>
+                        </Stop>
+                    </stops>
+                </LinearGradient>
+            </textFill>
+        </Label>
+        <Label layoutX="651.0" layoutY="25.0" prefHeight="260.0" prefWidth="300.0" text="HO">
+            <font>
+                <Font size="200.0" />
+            </font>
+            <textFill>
+                <LinearGradient endX="1.0" endY="1.0" startX="0.995726478105109">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color />
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color red="1.0" green="1.0" blue="1.0" />
+                            </color>
+                        </Stop>
+                    </stops>
+                </LinearGradient>
+            </textFill>
+        </Label>
+        <ImageView blendMode="SRC_ATOP" fitHeight="242.0" fitWidth="253.0" layoutX="409.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@assets/00.png" />
+            </image>
+        </ImageView>
+        <Button layoutX="197.0" layoutY="358.0" mnemonicParsing="false" onAction="#OpenInventory" prefHeight="53.0" prefWidth="165.0" text="INVENTORY" AnchorPane.rightAnchor="731.2641449789423">
+            <font>
+                <Font name="Webdings" size="24.0" />
+            </font>
+        </Button>
+        <Button layoutX="465.0" layoutY="358.0" mnemonicParsing="false" onAction="#OpenStock" prefHeight="53.0" prefWidth="165.0" text="STOCK">
+            <font>
+                <Font name="Webdings" size="24.0" />
+            </font>
+        </Button>
+        <Button layoutX="732.0" layoutY="358.0" mnemonicParsing="false" onAction="#OpenDispatch" prefHeight="53.0" prefWidth="165.0" text="DISPATCH">
+            <font>
+                <Font name="Webdings" size="24.0" />
+            </font>
+        </Button>
+        <Label layoutX="400.0" layoutY="458.0" prefHeight="41.0" prefWidth="293.0" text="Logistic Optimization Stratigies in Fresh Fruit Supply Chain" textFill="WHITE">
+            <font>
+                <Font size="11.0" />
+            </font>
+        </Label>
+      <BorderPane layoutX="409.0" layoutY="50.0" />
+    </children>
+</AnchorPane>

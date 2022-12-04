@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="minor_1_fx:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7bf3d3bf-28eb-4caa-aaa0-efc308ced346" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2I92jpOJIVOZfR2L1i2s5MusrDR" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/javafx-sdk-19/lib/javafx.swing.jar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Minor\minor_1_fx\src\main\java\com\saho\minor_1_fx" />
+      <recent name="E:\Minor\minor_1_fx\src" />
+      <recent name="E:\Minor\minor_1_fx\src\main\resources\com\saho\minor_1_fx" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Minor\minor_1_fx\src\main\resources\com\saho\minor_1_fx" />
+      <recent name="E:\Minor\minor_1_fx\src\main" />
+      <recent name="E:\Minor\minor_1_fx\src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Start">
+    <configuration name="LogisticsApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.saho.minor_1_fx.LogisticsApplication" />
+      <module name="minor_1_fx" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.saho.minor_1_fx.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MasterLink" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.saho.minor_1_fx.MasterLink" />
+      <module name="minor_1_fx" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.saho.minor_1_fx.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Start" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.saho.minor_1_fx.Start" />
+      <module name="minor_1_fx" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.saho.minor_1_fx.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in minor_1_fx" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="minor_1_fx" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="minor_1_fx.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/minor_1_fx_jar/minor_1_fx.jar" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Start" />
+        <item itemvalue="JAR Application.minor_1_fx.jar" />
+        <item itemvalue="Application.LogisticsApplication" />
+        <item itemvalue="Application.MasterLink" />
+        <item itemvalue="JUnit.All in minor_1_fx" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7bf3d3bf-28eb-4caa-aaa0-efc308ced346" name="Changes" comment="" />
+      <created>1669579617809</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1669579617809</updated>
+      <workItem from="1669579618951" duration="1954000" />
+      <workItem from="1669582508351" duration="1790000" />
+      <workItem from="1669618473423" duration="4814000" />
+      <workItem from="1669623535791" duration="8822000" />
+      <workItem from="1669681323537" duration="4645000" />
+      <workItem from="1669711375503" duration="2473000" />
+      <workItem from="1669780416999" duration="3654000" />
+      <workItem from="1669784460887" duration="125000" />
+      <workItem from="1669784603707" duration="177000" />
+      <workItem from="1669786881349" duration="36000" />
+      <workItem from="1669787868864" duration="226000" />
+      <workItem from="1669792411844" duration="42000" />
+      <workItem from="1669792645457" duration="722000" />
+      <workItem from="1669793498582" duration="450000" />
+      <workItem from="1669825652967" duration="308000" />
+      <workItem from="1669826036367" duration="120000" />
+      <workItem from="1669826164868" duration="3370000" />
+      <workItem from="1669872914527" duration="5086000" />
+      <workItem from="1669979800137" duration="31000" />
+      <workItem from="1670067109521" duration="73000" />
+      <workItem from="1670145885504" duration="5315000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="Version-3.0" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

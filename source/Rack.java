@@ -26,9 +26,19 @@ public class Rack
         }
     }
 
+    void pop()
+    {
+        top--;
+    }
+
 
     boolean hasSpace()
     {
         return this.top < this.capacity;
+    }
+
+    boolean isEmpty()
+    {
+        return top == 0;
     }
 }

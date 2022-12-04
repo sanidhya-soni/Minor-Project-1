@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="1094.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.saho.minor_1_fx.HomeViewController">
+   <children>
+      <ImageView fitHeight="507.0" fitWidth="1096.0" layoutX="-1.0" layoutY="-1.0" pickOnBounds="true">
+         <image>
+            <Image url="@assets/ari.jpg" />
+         </image>
+      </ImageView>
+      <Pane layoutX="696.0" layoutY="11.0" prefHeight="481.0" prefWidth="354.0" style="-fx-background-color: #000;">
+         <children>
+            <Button layoutX="37.0" layoutY="411.0" mnemonicParsing="false" onAction="#fetch_stock" prefHeight="57.0" prefWidth="281.0" style="-fx-background-color: #4c4ce6;" text="GENERATE" textFill="WHITE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Button>
+            <TextField fx:id="total_stock" alignment="CENTER" layoutX="28.0" layoutY="148.0" prefHeight="50.0" prefWidth="299.0" promptText="Total Stock">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </TextField>
+            <Label layoutX="100.0" layoutY="215.0" text="*Specify Stock Dates" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="38.0" layoutY="52.0" text="STOCK ARRIVAL" textFill="WHITE">
+               <font>
+                  <Font size="39.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="startDate" layoutX="28.0" layoutY="263.0" prefHeight="50.0" prefWidth="299.0" promptText="Start Date" style="-fx-font-size: 20px;" />
+            <DatePicker fx:id="endDate" layoutX="28.0" layoutY="328.0" prefHeight="50.0" prefWidth="299.0" promptText="End Date" style="-fx-font-size: 20px;" />
+         </children>
+      </Pane>
+      <Button layoutX="14.0" layoutY="436.0" mnemonicParsing="false" onAction="#OpenHome" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="48.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/HOME.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label layoutX="96.0" layoutY="194.0" text="&quot;Stock  Arrival Details&quot;" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="46.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

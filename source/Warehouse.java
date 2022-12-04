@@ -66,6 +66,31 @@ public class Warehouse
         }
     }
 
+    void dispatch(int amt, int day)
+    {
+        day -= 1;
+        int total_bins_available = current_rack[day] * rack_capacity + racks[current_rack[day]][day].top;
+        System.out.println(current_rack[day] + " " + day + " " + racks[current_rack[day]][day].top);
+        System.out.println(total_bins_available);
+
+        if(amt < total_bins_available)
+        {
+            while(amt != 0)
+            {
+                amt--;
+                if(!racks[current_rack[day]][day].isEmpty())
+                {
+                    racks[current_rack[day]][day].pop();
+                }
+                else
+                {
+                    current_rack[day]--;
+                    racks[current_rack[day]][day].pop();
+                }
+            }
+        }
+    }
+
     void print()
     {
         for(int i = 0; i < this.row * 2 - 1; i++)
