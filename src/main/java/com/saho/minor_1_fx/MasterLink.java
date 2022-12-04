@@ -22,14 +22,14 @@ public class MasterLink
         dsg.dataSetGen(ob.begin_date, ob.end_date, ob.total_fruits);
         System.out.println("\nProcessing");
 
-        String anim= "|/-\\";
-        for (int x =0 ; x <=100 ; x++)
-        {
-            String data = "\r" + anim.charAt(x % anim.length()) + " " + x;
-            System.out.write(data.getBytes());
-            Thread.sleep(20);
-        }
-        System.out.println("\n");
+//        String anim= "|/-\\";
+//        for (int x =0 ; x <=100 ; x++)
+//        {
+//            String data = "\r" + anim.charAt(x % anim.length()) + " " + x;
+//            System.out.write(data.getBytes());
+//            Thread.sleep(20);
+//        }
+//        System.out.println("\n");
         ob.extract();
 
         for(int i = 0; i < ob.day; i++)
@@ -61,9 +61,9 @@ public class MasterLink
         output = astar.findPath(ob.source_row, ob.source_col, ob.warehouse.inventory.length - 2, ob.warehouse.inventory[0].length - 1, output);
         System.out.println( "\n\n\n\n\n\n" + output);
 
-        File f = new File("output.txt");
+        File f = new File("C:\\Users\\Public\\Documents\\output.txt");
         f.createNewFile();
-        FileWriter fw = new FileWriter("output.txt");
+        FileWriter fw = new FileWriter("C:\\Users\\Public\\Documents\\output.txt");
         fw.write(output);
         fw.close();
     }
