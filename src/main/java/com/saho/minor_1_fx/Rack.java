@@ -17,28 +17,26 @@ public class Rack
     {
         if(hasSpace())
         {
-            rack[top++] = bin;
+            this.rack[this.top++] = bin;
             // System.out.println("Bin added succesfully in rack!");
         }
-        else
-        {
-            // System.out.println("Rack is full, Get a new one!");
-        }
+//        else
+//        {
+//            // System.out.println("Rack is full, Get a new one!");
+//        }
     }
 
-    // void pop()
-    // {
-    //     if(!hasSpace())
-    //     {
-    //         top--;
-    //         System.out.println("Tray removed succesfully!");
-    //     }
-    //     else
-    //         System.out.println("Rack is Empty!");
-    // }
+     void pop() {
+         this.top--;
+     }
 
     boolean hasSpace()
     {
         return this.top < this.capacity;
+    }
+
+    boolean isEmpty()
+    {
+        return this.top == 0;
     }
 }

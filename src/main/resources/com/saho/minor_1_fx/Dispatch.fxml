@@ -29,7 +29,7 @@
                   <Font size="23.0" />
                </font>
             </Button>
-            <Label fx:id="days_old" layoutX="37.0" layoutY="144.0" text="*How Many Days Old Stock You Need" textAlignment="CENTER" textFill="WHITE">
+            <Label layoutX="37.0" layoutY="144.0" text="*How Many Days Old Stock You Need" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="17.0" />
                </font>
@@ -39,11 +39,21 @@
                   <Font size="33.0" />
                </font>
             </Label>
-            <TextField alignment="CENTER" layoutX="30.0" layoutY="216.0" prefHeight="50.0" prefWidth="299.0" promptText="Days" fx:id="days">
+            <TextField fx:id="days" alignment="CENTER" layoutX="30.0" layoutY="191.0" prefHeight="50.0" prefWidth="299.0" promptText="Days">
                <font>
                   <Font size="23.0" />
                </font>
             </TextField>
+            <TextField fx:id="boxes" alignment="CENTER" layoutX="33.0" layoutY="313.0" prefHeight="56.0" prefWidth="299.0" promptText="No. of Boxes">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </TextField>
+            <Label contentDisplay="CENTER" layoutX="82.0" layoutY="263.0" prefHeight="26.0" prefWidth="202.0" text="&quot;No. of Boxes You Need&quot;" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Label layoutX="127.0" layoutY="48.0" prefHeight="275.0" prefWidth="503.0" text="&quot;Enter Dispatching Details&quot;" textFill="WHITE">

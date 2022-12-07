@@ -19,6 +19,7 @@ public class Main
     int total_fruits;
     int rack_capacity;
     int bin_capacity;
+    int dispatch_bin_count;
     int bins_used;
     int source_row;
     int source_col;
@@ -81,6 +82,7 @@ public class Main
         this.bins_used = 0;
         this.no_of_tray_used = new int[day];
         this.bin_min = new double[bin_row];
+        this.dispatch_bin_count = Integer.parseInt(args[8]);
     }
 
     Main(int warehouse_row, int warehouse_col, int rack_capacity, int bin_capacity, String start_d, String end_d, int total_fruits) throws ParseException {
@@ -236,6 +238,14 @@ public class Main
         return (int)TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
     }
 
+    void noOfBinsNeeded(int day)
+    {
+//        System.out.print("Enter No. of Bins required: ");
+//        int bins_needed = sc.nextInt();
+
+        warehouse.dispatch(dispatch_bin_count, day);
+    }
+
     String orderLocation(int days_old, String output)
     {
         int col = days_old - 1;
@@ -265,6 +275,10 @@ public class Main
             sc.close();
             output += "Stock not Found" + "\n";
             return output;
+        }
+        else
+        {
+            this.noOfBinsNeeded(days_old);
         }
         this.source_row = row;
         this.source_col = col;

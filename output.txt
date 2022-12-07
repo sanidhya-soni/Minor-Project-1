@@ -1,21 +1,21 @@
-Trays used for day 1 = 73
-Trays used for day 2 = 72
-Trays used for day 3 = 65
-Trays used for day 4 = 70
+Trays used for day 1 = 64
+Trays used for day 2 = 69
+Trays used for day 3 = 74
+Trays used for day 4 = 74
 
-Total Bins Used = 45
+Total Bins Used = 48
 
-Day 1: 50.0   |    500.0   |    50.0   |    500.0   |    500.0   |    
-Day 2: 175.0   |    500.0   |    500.0   |    500.0   |    500.0   |    
-Day 3: 500.0   |    300.0   |    500.0   |    500.0   |    500.0   |    
-Day 4: 350.0   |    50.0   |    500.0   |    500.0   |    500.0   |    
+Day 1: 325.0   |    50.0   |    500.0   |    500.0   |    500.0   |    
+Day 2: 500.0   |    500.0   |    500.0   |    500.0   |    500.0   |    
+Day 3: 500.0   |    500.0   |    500.0   |    500.0   |    500.0   |    
+Day 4: 450.0   |    500.0   |    500.0   |    500.0   |    500.0   |    
 
 Racks Status
 Day 1  Day 2  Day 3  Day 4  Day 5  
 0   |   0   |   0   |   0   |   4   |   
 0   |   0   |   0   |   0   |   4   |   
-1   |   0   |   1   |   1   |   4   |   
-4   |   4   |   4   |   4   |   4   |   
+2   |   0   |   0   |   0   |   4   |   
+4   |   4   |   3   |   3   |   4   |   
 4   |   4   |   4   |   4   |   4   |   
 
 
@@ -33,7 +33,18 @@ Wareshouse Inventory Representation
 1 0 1 0 1 0 1 0 1 
 
 
-Row = 2, Col = 2
+Row = 2, Col = 1
 Inventory Row = 5
-Inventory Column = 5
-50 51 52 61 70 71 
+Inventory Column = 3
+48 49 50 51 52 61 70 71 
+
+
+
+Racks Status
+Day 1  Day 2  Day 3  Day 4  Day 5  
+0   |   0   |   0   |   0   |   4   |   
+0   |   1   |   0   |   0   |   4   |   
+2   |   4   |   0   |   0   |   4   |   
+4   |   4   |   3   |   3   |   4   |   
+4   |   4   |   4   |   4   |   4   |   
+

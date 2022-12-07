@@ -21,10 +21,11 @@ import javafx.stage.Stage;
 
 public class HomeViewController {
 
-    static String[] arguments = new String[8];
+    static String[] arguments = new String[9];
     public DatePicker startDate;
     public DatePicker endDate;
     public TextField days;
+    public TextField boxes;
     @FXML
     private TextField binHeight;
     @FXML
@@ -44,6 +45,7 @@ public class HomeViewController {
     String end_date;
     int fruit_stock;
     int days_old;
+    int no_of_boxes;
     @FXML
     void OpenInventory(ActionEvent event) throws IOException {
         Parent root;
@@ -104,7 +106,9 @@ public class HomeViewController {
     @FXML
     void FindPath(ActionEvent event) throws Exception {
         this.days_old = Integer.parseInt(this.days.getText());
-        arguments[7] = Integer.toString(days_old);
+        arguments[7] = Integer.toString(this.days_old);
+        this.no_of_boxes = Integer.parseInt((this.boxes.getText()));
+        arguments[8] = Integer.toString(this.no_of_boxes);
         MasterLink ml = new MasterLink();
         ml.arguments = arguments;
         ml.start();

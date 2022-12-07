@@ -12,7 +12,7 @@ public class MasterLink
 
     MasterLink()
     {
-        this.arguments = new String[8];
+        this.arguments = new String[9];
     }
 
     void start() throws Exception {
@@ -45,7 +45,7 @@ public class MasterLink
         System.out.println("\n\nWareshouse Inventory Representation\n");
         output += "\n\nWareshouse Inventory Representation\n" + "\n";
         output = ob.warehouse.print(output) + "\n\n";
-        output = ob.orderLocation(Integer.parseInt(this.arguments[this.arguments.length - 1]), output);
+        output = ob.orderLocation(Integer.parseInt(this.arguments[7]), output);
         if(ob.source_row == -1 && ob.source_col == -1)
         {
             System.out.println("Stock isn't Available");
@@ -59,28 +59,30 @@ public class MasterLink
         }
         output = ob.sourceInInventory(output);
         output = astar.findPath(ob.source_row, ob.source_col, ob.warehouse.inventory.length - 2, ob.warehouse.inventory[0].length - 1, output);
+        output += "\n\n";
+        output = ob.warehouse.printRacks(output);
         System.out.println( "\n\n\n\n\n\n" + output);
 
-        File f = new File("C:\\Users\\Public\\Documents\\output.txt");
+        File f = new File("output.txt");
         f.createNewFile();
-        FileWriter fw = new FileWriter("C:\\Users\\Public\\Documents\\output.txt");
+        FileWriter fw = new FileWriter("output.txt");
         fw.write(output);
         fw.close();
     }
 
-    public static void main(String[] args) throws Exception {
-//        String
-        MasterLink x = new MasterLink();
-        String filename = "data.csv";
-        BufferedReader br = new BufferedReader(new FileReader(filename));
-        x.arguments[0] = br.readLine();
-        x.arguments[1] = br.readLine();
-        x.arguments[2] = br.readLine();
-        x.arguments[3] = br.readLine();
-        x.arguments[4] = br.readLine();
-        x.arguments[5] = br.readLine();
-        x.arguments[6] = br.readLine();
-        x.arguments[7] = br.readLine();
-        x.start();
-    }
+//    public static void main(String[] args) throws Exception {
+////        String
+//        MasterLink x = new MasterLink();
+//        String filename = "data.csv";
+//        BufferedReader br = new BufferedReader(new FileReader(filename));
+//        x.arguments[0] = br.readLine();
+//        x.arguments[1] = br.readLine();
+//        x.arguments[2] = br.readLine();
+//        x.arguments[3] = br.readLine();
+//        x.arguments[4] = br.readLine();
+//        x.arguments[5] = br.readLine();
+//        x.arguments[6] = br.readLine();
+//        x.arguments[7] = br.readLine();
+//        x.start();
+//    }
 }
